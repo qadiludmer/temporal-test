@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temporal-test
+  namespace: temporal
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      app: temporal-test
+  template:
+    metadata:
+      labels:
+        app: temporal-test
+    spec:
+      containers:
+        - name: your-app
+          image: qadiludmer/temporal-test:latest
+          command: ["poetry"]
+          args: ["run", "worker"]
+          env:
+            - name: TEMPORAL_ADDRESS
+              value: temporal-frontend:7233
+          resources:
+            requests:
+              cpu: "1"
+              memory: "1Gi"
+

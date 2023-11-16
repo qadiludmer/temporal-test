@@ -7,5 +7,8 @@ push:
 deploy:
 	kubectl apply -f deployment.yml
 
+undeploy:
+	kubectl delete -f deployment.yml
+
 local-temporal-cluster:
 	docker-compose up

@@ -17,7 +17,6 @@ save:
 	docker save qadiludmer/temporal-test:0.1 -o temporal-test.tar
 
 build-on-k8s:
-	kubectl delete -f ./kaniko.yaml
 	kubectl apply -f ./kaniko.yaml
 
 deploy:

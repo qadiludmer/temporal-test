@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+  namespace: temporal
+spec:
+  containers:
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:v1.9.1
+      command: [/kaniko/executor]
+      args:
+        - --context=git://github.com/qadiludmer/temporal-test.git
+        - --git=single-branch=true
+        - --git=branch=main
+        - --destination=qadiludmer/temporal-test:latest
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker/
+  volumes:
+    - name: docker-config
+      projected:
+        sources:
+          - secret:
+              name: regcred
+              items:
+                - key: .dockerconfigjson
+                  path: config.json

@@ -16,6 +16,7 @@ spec:
       containers:
         - name: your-app
           image: qadiludmer/temporal-test:latest
+          imagePullPolicy: Always
           command: ["poetry"]
           args: ["run", "worker"]
           env:

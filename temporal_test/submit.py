@@ -14,12 +14,11 @@ async def main():
         random.choices(string.ascii_uppercase + string.digits, k=30)
     )
 
-    for i in range(10):
-        result = await client.execute_workflow(
-            TestWorkflow.name, id=workflow_id, task_queue=Config.queue
-        )
+    result = await client.execute_workflow(
+        TestWorkflow.name, id=workflow_id, task_queue=Config.queue
+    )
 
-        print(result)
+    print(result)
 
 
 if __name__ == "__main__":

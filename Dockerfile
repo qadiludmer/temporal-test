@@ -7,5 +7,8 @@ ENV PATH="${PATH}:/root/.local/bin/"
 
 WORKDIR /app
 
-COPY . .
+COPY ./poetry.lock .
+COPY ./pyproject.toml .
+COPY ./temporal_test ./temporal_test
+
 RUN poetry install

@@ -22,5 +22,13 @@ async def main():
 
     await worker.run()
 
-print("starting worker")
-asyncio.run(main())
+print(__name__)
+
+if __name__ == "temporal_test.worker":
+    print("starting worker")
+    asyncio.run(main())
+
+if __name__ == "__main__":
+    print("starting worker")
+    asyncio.run(main())
+

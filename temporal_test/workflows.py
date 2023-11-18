@@ -12,7 +12,7 @@ class TestWorkflow:
     @temporalio.workflow.run
     async def run(self) -> str:
         tasks = []
-        for i in range(10):
+        for i in range(10*1000):
             tasks.append(temporalio.workflow.execute_activity(
                 say_hello_activity,
                 "john 1",

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: temporal-test
+  name: temporal-test-2
   namespace: temporal
 spec:
   replicas: 25

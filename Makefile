@@ -21,6 +21,7 @@ build-on-k8s:
 
 deploy:
 	kubectl apply -f deployment.yml
+	kubectl apply -f deployment-2.yml
 
 undeploy:
 	kubectl delete -f deployment.yml

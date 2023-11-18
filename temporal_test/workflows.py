@@ -16,6 +16,7 @@ class TestWorkflow:
             tasks.append(temporalio.workflow.execute_activity(
                 say_hello_activity,
                 "john 1",
+                start_to_close_timeout=datetime.timedelta(minutes=15),
             ))
 
         results = await asyncio.gather(*tasks)

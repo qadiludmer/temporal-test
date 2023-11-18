@@ -27,3 +27,9 @@ undeploy:
 
 local-temporal-cluster:
 	docker-compose up
+
+tunnel-temporal-web:
+	kubectl port-forward --namespace temporal svc/temporal-web 8080:8080
+
+tunnel-temporal-fe:
+	kubectl port-forward --namespace temporal svc/temporal-frontend 7233:7233

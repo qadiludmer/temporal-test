@@ -4,7 +4,7 @@ metadata:
   name: temporal-test
   namespace: temporal
 spec:
-  replicas: 20
+  replicas: 500
   selector:
     matchLabels:
       app: temporal-test

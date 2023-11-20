@@ -21,10 +21,11 @@ build-on-k8s:
 
 deploy:
 	kubectl apply -f deployment.yml
-	kubectl apply -f deployment-2.yml
+	#kubectl apply -f deployment-2.yml
 
 undeploy:
 	kubectl delete -f deployment.yml
+	kubectl delete -f deployment-2.yml
 
 local-temporal-cluster:
 	docker-compose up

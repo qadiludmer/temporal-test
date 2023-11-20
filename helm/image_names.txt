@@ -1,0 +1,13 @@
+busybox
+cassandra:3.11.3
+curlimages/curl:7.68.0
+docker.elastic.co/elasticsearch/elasticsearch:7.17.3
+grafana/grafana:6.7.1
+jimmidyson/configmap-reload:v0.5.0
+k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.3.0
+prom/pushgateway:v1.4.2
+quay.io/prometheus/alertmanager:v0.23.0
+quay.io/prometheus/prometheus:v2.31.1
+temporalio/admin-tools:1.22.2
+temporalio/server:1.22.2
+temporalio/ui:2.16.2

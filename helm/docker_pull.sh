@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yq '..|.image? | select(.)' | sort -u > image_names.txt
+cat temporal.yaml | yq '..|.image? | select(.)' | sort -u > image_names.txt
 
 # Input file containing Docker image names (one per line)
 input_file="image_names.txt"
@@ -20,7 +20,7 @@ fi
 # Iterate through each line in the input file and pull/save the Docker images
 while IFS= read -r image; do
   # Pull the Docker image
-  docker pull "$image"
+  docker pull --platform linux/amd64 "$image"
 
   # Save the Docker image as a tar file
   image_name=$(echo "$image" | tr ':' '_' | tr '//' @) # Replace ':' with '_' in image name

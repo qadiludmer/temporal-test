@@ -21,7 +21,7 @@ metadata:
     app.kubernetes.io/version: "6.7.1"
     app.kubernetes.io/managed-by: Helm
   name: release-name-grafana
-  namespace: default
+  namespace: xxx
 ---
 # Source: temporal/charts/prometheus/charts/kube-state-metrics/templates/serviceaccount.yaml
 apiVersion: v1
@@ -36,7 +36,7 @@ metadata:
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/version: "2.3.0"
   name: release-name-kube-state-metrics
-  namespace: default
+  namespace: xxx
 imagePullSecrets:
   []
 ---
@@ -51,7 +51,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-alertmanager
-  namespace: default
+  namespace: xxx
   annotations:
     {}
 ---
@@ -66,7 +66,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-pushgateway
-  namespace: default
+  namespace: xxx
   annotations:
     {}
 ---
@@ -81,7 +81,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-server
-  namespace: default
+  namespace: xxx
   annotations:
     {}
 ---
@@ -90,7 +90,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: release-name-grafana
-  namespace: default
+  namespace: xxx
   labels:
     helm.sh/chart: grafana-5.0.10
     app.kubernetes.io/name: grafana
@@ -100,7 +100,7 @@ metadata:
 type: Opaque
 data:
   admin-user: "YWRtaW4="
-  admin-password: "Z2tjQktFbnVLcWVzU1N0eHBWMUJpRlVkMENNWFFHSWswd2RUWFZqcg=="
+  admin-password: "OEJDWGNsaUV1amIyTTVydVRoalVyRDRyMWFrWWV5OVJuaTNkUlY0WA=="
   ldap-toml: ""
 ---
 # Source: temporal/templates/server-secret.yaml
@@ -140,7 +140,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: release-name-grafana
-  namespace: default
+  namespace: xxx
   labels:
     helm.sh/chart: grafana-5.0.10
     app.kubernetes.io/name: grafana
@@ -246,7 +246,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: release-name-grafana-dashboards-default
-  namespace: default
+  namespace: xxx
   labels:
     helm.sh/chart: grafana-5.0.10
     app.kubernetes.io/name: grafana
@@ -268,7 +268,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-alertmanager
-  namespace: default
+  namespace: xxx
 data:
   alertmanager.yml: |
     global: {}
@@ -291,7 +291,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-server
-  namespace: default
+  namespace: xxx
 data:
   alerting_rules.yml: |
     {}
@@ -589,7 +589,7 @@ data:
         bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
         relabel_configs:
         - source_labels: [__meta_kubernetes_namespace]
-          regex: default
+          regex: xxx
           action: keep
         - source_labels: [__meta_kubernetes_pod_label_app]
           regex: prometheus
@@ -633,7 +633,7 @@ data:
       datastores:
         default:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_STORE_PASSWORD }}"
             consistency:
@@ -645,7 +645,7 @@ data:
             user: user
         visibility:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_VISIBILITY_STORE_PASSWORD }}"
             consistency:
@@ -756,7 +756,7 @@ data:
       datastores:
         default:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_STORE_PASSWORD }}"
             consistency:
@@ -768,7 +768,7 @@ data:
             user: user
         visibility:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_VISIBILITY_STORE_PASSWORD }}"
             consistency:
@@ -879,7 +879,7 @@ data:
       datastores:
         default:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_STORE_PASSWORD }}"
             consistency:
@@ -891,7 +891,7 @@ data:
             user: user
         visibility:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_VISIBILITY_STORE_PASSWORD }}"
             consistency:
@@ -1002,7 +1002,7 @@ data:
       datastores:
         default:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_STORE_PASSWORD }}"
             consistency:
@@ -1014,7 +1014,7 @@ data:
             user: user
         visibility:
           cassandra:
-            hosts: "release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,release-name-cassandra.default.svc.cluster.local,"
+            hosts: "release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,release-name-cassandra.xxx.svc.cluster.local,"
             port: 9042
             password: "{{ .Env.TEMPORAL_VISIBILITY_STORE_PASSWORD }}"
             consistency:
@@ -1147,7 +1147,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-alertmanager
-  namespace: default
+  namespace: xxx
 spec:
   accessModes:
     - ReadWriteOnce
@@ -1166,7 +1166,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-server
-  namespace: default
+  namespace: xxx
 spec:
   accessModes:
     - ReadWriteOnce
@@ -1414,7 +1414,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: release-name-kube-state-metrics
-  namespace: default
+  namespace: xxx
 ---
 # Source: temporal/charts/prometheus/templates/alertmanager/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1430,7 +1430,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: release-name-prometheus-alertmanager
-    namespace: default
+    namespace: xxx
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -1450,7 +1450,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: release-name-prometheus-pushgateway
-    namespace: default
+    namespace: xxx
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -1470,7 +1470,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: release-name-prometheus-server
-    namespace: default
+    namespace: xxx
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -1565,7 +1565,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: release-name-grafana
-  namespace: default
+  namespace: xxx
   labels:
     helm.sh/chart: grafana-5.0.10
     app.kubernetes.io/name: grafana
@@ -1589,7 +1589,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: release-name-kube-state-metrics
-  namespace: default
+  namespace: xxx
   labels:    
     helm.sh/chart: kube-state-metrics-4.4.3
     app.kubernetes.io/managed-by: Helm
@@ -1623,7 +1623,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-alertmanager
-  namespace: default
+  namespace: xxx
 spec:
   ports:
     - name: http
@@ -1650,7 +1650,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-pushgateway
-  namespace: default
+  namespace: xxx
 spec:
   ports:
     - name: http
@@ -1674,7 +1674,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-server
-  namespace: default
+  namespace: xxx
 spec:
   ports:
     - name: http
@@ -1941,7 +1941,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: release-name-grafana
-  namespace: default
+  namespace: xxx
   labels:
     helm.sh/chart: grafana-5.0.10
     app.kubernetes.io/name: grafana
@@ -1962,10 +1962,10 @@ spec:
         app.kubernetes.io/name: grafana
         app.kubernetes.io/instance: release-name
       annotations:
-        checksum/config: f31f26bf53e5d2e1c9d29a9e8135f04770673d94c26e365fed405dbb13233871
-        checksum/dashboards-json-config: c40c4cc0722a4d725944438e967eb2e528fe1a7c9e90c21348d4ccb003972a5a
+        checksum/config: b1fe60b14590af36e4a3a4310498a6b5315b649484c4bd482b3435fe66f5be0a
+        checksum/dashboards-json-config: 973bd398769f7c5d18bd2bad0e34c0c1e7548a569b5285b85f7148794dd1cda6
         checksum/sc-dashboard-provider-config: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
-        checksum/secret: 3286d70cacaead8d2d0d24ce5847dc82fc4b06a8f9d046eb92253fa0b8883fa8
+        checksum/secret: 8f4c758b9ddf6e0c53ff1fb09156e5cafaae0813429612afb777b5ebf284dbdb
     spec:
       
       serviceAccountName: release-name-grafana
@@ -2049,7 +2049,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: release-name-kube-state-metrics
-  namespace: default
+  namespace: xxx
   labels:    
     helm.sh/chart: kube-state-metrics-4.4.3
     app.kubernetes.io/managed-by: Helm
@@ -2116,7 +2116,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-alertmanager
-  namespace: default
+  namespace: xxx
 spec:
   selector:
     matchLabels:
@@ -2202,7 +2202,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-pushgateway
-  namespace: default
+  namespace: xxx
 spec:
   selector:
     matchLabels:
@@ -2256,7 +2256,7 @@ metadata:
     chart: prometheus-15.1.3
     heritage: Helm
   name: release-name-prometheus-server
-  namespace: default
+  namespace: xxx
 spec:
   selector:
     matchLabels:
@@ -2430,7 +2430,7 @@ spec:
         app.kubernetes.io/component: frontend
         app.kubernetes.io/part-of: temporal
       annotations:
-        checksum/config: 4bfb09919e4c89423ff6901efb3221522acda39b20bdc1424cf91f5cfb12dfc5
+        checksum/config: 6e6a3c9c2fa79127e0de8a5a0acc44d69a38d26886c093d1f64eb1a8258966f6
         prometheus.io/job: temporal-frontend
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9090'
@@ -2442,19 +2442,19 @@ spec:
       initContainers:
         - name: check-cassandra-service
           image: busybox
-          command: ['sh', '-c', 'until nslookup release-name-cassandra.default.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
+          command: ['sh', '-c', 'until nslookup release-name-cassandra.xxx.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
         - name: check-cassandra
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
         - name: check-cassandra-temporal-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
         - name: check-cassandra-visibility-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
         - name: check-elasticsearch-index
           image: "temporalio/admin-tools:1.22.2"
           imagePullPolicy: IfNotPresent
@@ -2557,7 +2557,7 @@ spec:
         app.kubernetes.io/component: history
         app.kubernetes.io/part-of: temporal
       annotations:
-        checksum/config: 4bfb09919e4c89423ff6901efb3221522acda39b20bdc1424cf91f5cfb12dfc5
+        checksum/config: 6e6a3c9c2fa79127e0de8a5a0acc44d69a38d26886c093d1f64eb1a8258966f6
         prometheus.io/job: temporal-history
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9090'
@@ -2569,19 +2569,19 @@ spec:
       initContainers:
         - name: check-cassandra-service
           image: busybox
-          command: ['sh', '-c', 'until nslookup release-name-cassandra.default.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
+          command: ['sh', '-c', 'until nslookup release-name-cassandra.xxx.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
         - name: check-cassandra
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
         - name: check-cassandra-temporal-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
         - name: check-cassandra-visibility-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
         - name: check-elasticsearch-index
           image: "temporalio/admin-tools:1.22.2"
           imagePullPolicy: IfNotPresent
@@ -2684,7 +2684,7 @@ spec:
         app.kubernetes.io/component: matching
         app.kubernetes.io/part-of: temporal
       annotations:
-        checksum/config: 4bfb09919e4c89423ff6901efb3221522acda39b20bdc1424cf91f5cfb12dfc5
+        checksum/config: 6e6a3c9c2fa79127e0de8a5a0acc44d69a38d26886c093d1f64eb1a8258966f6
         prometheus.io/job: temporal-matching
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9090'
@@ -2696,19 +2696,19 @@ spec:
       initContainers:
         - name: check-cassandra-service
           image: busybox
-          command: ['sh', '-c', 'until nslookup release-name-cassandra.default.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
+          command: ['sh', '-c', 'until nslookup release-name-cassandra.xxx.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
         - name: check-cassandra
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
         - name: check-cassandra-temporal-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
         - name: check-cassandra-visibility-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
         - name: check-elasticsearch-index
           image: "temporalio/admin-tools:1.22.2"
           imagePullPolicy: IfNotPresent
@@ -2811,7 +2811,7 @@ spec:
         app.kubernetes.io/component: worker
         app.kubernetes.io/part-of: temporal
       annotations:
-        checksum/config: 4bfb09919e4c89423ff6901efb3221522acda39b20bdc1424cf91f5cfb12dfc5
+        checksum/config: 6e6a3c9c2fa79127e0de8a5a0acc44d69a38d26886c093d1f64eb1a8258966f6
         prometheus.io/job: temporal-worker
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9090'
@@ -2823,19 +2823,19 @@ spec:
       initContainers:
         - name: check-cassandra-service
           image: busybox
-          command: ['sh', '-c', 'until nslookup release-name-cassandra.default.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
+          command: ['sh', '-c', 'until nslookup release-name-cassandra.xxx.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
         - name: check-cassandra
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
         - name: check-cassandra-temporal-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal$; do echo waiting for default keyspace to become ready; sleep 1; done;']
         - name: check-cassandra-visibility-schema
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SELECT keyspace_name FROM system_schema.keyspaces" | grep temporal_visibility$; do echo waiting for visibility keyspace to become ready; sleep 1; done;']
         - name: check-elasticsearch-index
           image: "temporalio/admin-tools:1.22.2"
           imagePullPolicy: IfNotPresent
@@ -2945,7 +2945,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: TEMPORAL_ADDRESS
-              value: "release-name-temporal-frontend.default.svc:7233"
+              value: "release-name-temporal-frontend.xxx.svc:7233"
           ports:
             - name: http
               containerPort: 8080
@@ -2988,7 +2988,7 @@ spec:
           {}
         env:
         - name: CASSANDRA_SEEDS
-          value: "release-name-cassandra-0.release-name-cassandra.default.svc.cluster.local"
+          value: "release-name-cassandra-0.release-name-cassandra.xxx.svc.cluster.local"
         - name: MAX_HEAP_SIZE
           value: "512M"
         - name: HEAP_NEWSIZE
@@ -3228,7 +3228,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "release-name-rvwkj-test"
+  name: "release-name-vrlpn-test"
   annotations:
     "helm.sh/hook": test
     "helm.sh/hook-delete-policy": hook-succeeded
@@ -3237,7 +3237,7 @@ spec:
     fsGroup: 1000
     runAsUser: 1000
   containers:
-  - name: "release-name-xolzj-test"
+  - name: "release-name-kdnms-test"
     image: "docker.elastic.co/elasticsearch/elasticsearch:7.17.3"
     imagePullPolicy: "IfNotPresent"
     command:
@@ -3284,18 +3284,18 @@ spec:
       initContainers:
         - name: check-cassandra-service
           image: busybox
-          command: ['sh', '-c', 'until nslookup release-name-cassandra.default.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
+          command: ['sh', '-c', 'until nslookup release-name-cassandra.xxx.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
         - name: check-cassandra
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
         - name: create-default-store
           image: "temporalio/admin-tools:1.22.2"
           imagePullPolicy: IfNotPresent
           command: ['temporal-cassandra-tool', 'create', '-k', 'temporal', '--replication-factor', '1']
           env:
             - name: CASSANDRA_HOST
-              value: release-name-cassandra.default.svc.cluster.local
+              value: release-name-cassandra.xxx.svc.cluster.local
             - name: CASSANDRA_PORT
               value: "9042"
             - name: CASSANDRA_KEYSPACE
@@ -3310,7 +3310,7 @@ spec:
           command: ['temporal-cassandra-tool', 'create', '-k', 'temporal_visibility', '--replication-factor', '1']
           env:
             - name: CASSANDRA_HOST
-              value: release-name-cassandra.default.svc.cluster.local
+              value: release-name-cassandra.xxx.svc.cluster.local
             - name: CASSANDRA_PORT
               value: "9042"
             - name: CASSANDRA_KEYSPACE
@@ -3326,7 +3326,7 @@ spec:
           command: ['temporal-cassandra-tool', 'setup-schema', '-v', '0.0']
           env:
             - name: CASSANDRA_HOST
-              value: release-name-cassandra.default.svc.cluster.local
+              value: release-name-cassandra.xxx.svc.cluster.local
             - name: CASSANDRA_PORT
               value: "9042"
             - name: CASSANDRA_KEYSPACE
@@ -3341,7 +3341,7 @@ spec:
           command: ['temporal-cassandra-tool', 'setup-schema', '-v', '0.0']
           env:
             - name: CASSANDRA_HOST
-              value: release-name-cassandra.default.svc.cluster.local
+              value: release-name-cassandra.xxx.svc.cluster.local
             - name: CASSANDRA_PORT
               value: "9042"
             - name: CASSANDRA_KEYSPACE
@@ -3387,11 +3387,11 @@ spec:
       initContainers:
         - name: check-cassandra-service
           image: busybox
-          command: ['sh', '-c', 'until nslookup release-name-cassandra.default.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
+          command: ['sh', '-c', 'until nslookup release-name-cassandra.xxx.svc.cluster.local; do echo waiting for cassandra service; sleep 1; done;']
         - name: check-cassandra
           image: "cassandra:3.11.3"
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', 'until cqlsh release-name-cassandra.default.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
+          command: ['sh', '-c', 'until cqlsh release-name-cassandra.xxx.svc.cluster.local 9042 -e "SHOW VERSION"; do echo waiting for cassandra to start; sleep 1; done;']
       containers:
         - name: default-schema
           image: "temporalio/admin-tools:1.22.2"
@@ -3399,7 +3399,7 @@ spec:
           command: ['temporal-cassandra-tool', 'update-schema', '--schema-dir', '/etc/temporal/schema/cassandra/temporal/versioned']
           env:
             - name: CASSANDRA_HOST
-              value: release-name-cassandra.default.svc.cluster.local
+              value: release-name-cassandra.xxx.svc.cluster.local
             - name: CASSANDRA_PORT
               value: "9042"
             - name: CASSANDRA_KEYSPACE
@@ -3414,7 +3414,7 @@ spec:
           command: ['temporal-cassandra-tool', 'update-schema', '--schema-dir', '/etc/temporal/schema/cassandra/visibility/versioned']
           env:
             - name: CASSANDRA_HOST
-              value: release-name-cassandra.default.svc.cluster.local
+              value: release-name-cassandra.xxx.svc.cluster.local
             - name: CASSANDRA_PORT
               value: "9042"
             - name: CASSANDRA_KEYSPACE

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yq '..|.image? | select(.)' | sort -u > image_names.txt
+
 # Input file containing Docker image names (one per line)
 input_file="image_names.txt"
 
